@@ -23,6 +23,7 @@ export default function Map({ latitude, longitude }: MapProps) {
 			position: coordinate,
 			map,
 		});
+		return marker;
 	};
 
 	return (
@@ -43,8 +44,6 @@ export default function Map({ latitude, longitude }: MapProps) {
 }
 
 const MapContainer = styled.div`
-	max-height: 400px;
-	max-width: 400px;
-	width: 25vmax;
-	height: 25vmax;
+	height: 100%;
+	width: 100;
 `;
