@@ -27,8 +27,8 @@ export default function PropertyScreen({ property }: PropertyProps) {
 				<div>
 					<h2>Address</h2>
 					<h1>
-						{property.suite ? `#${property.suite} ` : ""}
-						{property.house_number} {property.street_name}
+						{property.house_number} {property.street_name}{" "}
+						{property.suite ? `Suite ${property.suite} ` : ""}
 					</h1>
 				</div>
 				<div>

@@ -10,7 +10,7 @@ export interface Neighbourhood {
 }
 
 export interface Property {
-	account_namber: string;
+	account_number: string;
 	suite?: string;
 	house_number: string;
 	street_name: string;
