@@ -71,4 +71,5 @@ const Row = styled.div`
 
 const Col = styled.div`
 	width: 100%;
+	margin: 25px;
 `;
