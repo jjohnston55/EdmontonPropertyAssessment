@@ -13,6 +13,18 @@ export default function Map({ latitude, longitude }: MapProps) {
 		lng: longitude,
 	};
 
+	/**
+	 * Will render the default Google Maps marker on the map
+	 * @param map The map
+	 * @param maps To access the Google Maps API
+	 */
+	const renderMarker = (map: any, maps: any): void => {
+		let marker = new maps.Marker({
+			position: coordinate,
+			map,
+		});
+	};
+
 	return (
 		<MapContainer id="map">
 			<GoogleMapReact
@@ -22,6 +34,8 @@ export default function Map({ latitude, longitude }: MapProps) {
 					libraries: ["places"],
 				}}
 				center={coordinate}
+				onGoogleApiLoaded={({ map, maps }) => renderMarker(map, maps)}
+				yesIWantToUseGoogleMapApiInternals
 				zoom={15}
 			/>
 		</MapContainer>
