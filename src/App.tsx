@@ -1,8 +1,8 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, Suspense, useEffect, useState } from "react";
 import styled from "styled-components";
-import PropertyScreen from "./components/PropertyScreen";
 import { Neighbourhood, Property } from "./utils/types";
 import logoSrc from "./resources/EDM.png";
+const PropertyScreen = React.lazy(() => import("./components/PropertyScreen"));
 
 export default function App() {
 	const [neighbourhoodText, setNeighbourhoodText] = useState("");
@@ -35,7 +35,7 @@ export default function App() {
 	useEffect(() => {
 		if (neighbourhoodText.length > 0) {
 			const neighbourhood = neighbourhoods.find(
-				(n) => n.descriptive_name === neighbourhoodText
+				(n) => n.name === neighbourhoodText.toUpperCase()
 			);
 
 			if (neighbourhood) {
@@ -48,7 +48,7 @@ export default function App() {
 			setSelectedNeighbourhood(undefined);
 			setShowProperty(false);
 		}
-	}, [neighbourhoodText]);
+	}, [neighbourhoodText, neighbourhoods]);
 
 	const changeNeighbourhood = (event: ChangeEvent<HTMLInputElement>): void => {
 		setNeighbourhoodText(event.target.value);
@@ -61,7 +61,7 @@ export default function App() {
 
 		if (options && address.length > 0) {
 			options.forEach((option) => {
-				if (option.text === address) {
+				if (option.text === address.toUpperCase()) {
 					accountNumber = option.id;
 				}
 			});
@@ -72,6 +72,9 @@ export default function App() {
 				setProperty(undefined);
 				setShowProperty(false);
 			}
+		} else {
+			setProperty(undefined);
+			setShowProperty(false);
 		}
 	};
 
@@ -88,7 +91,7 @@ export default function App() {
 					<Image src={logoSrc} alt="Edmonton.png" />
 				</Row>
 				<Row>
-					<h2>See your assessed property value</h2>
+					<h2>See Your Assessed Property Value:</h2>
 				</Row>
 
 				<Row>
@@ -113,7 +116,7 @@ export default function App() {
 						<Row>
 							<Input
 								list="properties"
-								placeholder="Address.."
+								placeholder="Enter Your Address.."
 								onChange={changeProperty}
 							/>
 							<datalist id="properties">
@@ -153,8 +156,10 @@ export default function App() {
 				</Row>
 			</Col>
 			{showProperty && property && selectedNeighbourhood && (
-				<Col>
-					<PropertyScreen property={property} neighbourhood={selectedNeighbourhood} />
+				<Col className="slide-in-right">
+					<Suspense fallback={<span>loading</span>}>
+						<PropertyScreen property={property} neighbourhood={selectedNeighbourhood} />
+					</Suspense>
 				</Col>
 			)}
 		</Container>
@@ -171,15 +176,47 @@ const Container = styled.div`
 
 	.light {
 		background-color: #0081bc;
-		width: 40%;
+		width: 40vw;
+		transition: width 1.2s;
+		box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 
 		.top {
 			margin-top: 20vh;
 		}
 	}
 
+	.slide-in-right {
+		-webkit-animation: slide-in-right 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 0.5 both;
+		animation: slide-in-right 1.2s cubic-bezier(0.39, 0.575, 0.565, 1) 0.5s both;
+	}
+
 	.fullscreen {
 		width: 100%;
+	}
+
+	@-webkit-keyframes slide-in-right {
+		0% {
+			-webkit-transform: translateX(1000px);
+			transform: translateX(1000px);
+			opacity: 0;
+		}
+		100% {
+			-webkit-transform: translateX(0);
+			transform: translateX(0);
+			opacity: 1;
+		}
+	}
+	@keyframes slide-in-right {
+		0% {
+			-webkit-transform: translateX(1000px);
+			transform: translateX(1000px);
+			opacity: 0;
+		}
+		100% {
+			-webkit-transform: translateX(0);
+			transform: translateX(0);
+			opacity: 1;
+		}
 	}
 `;
 
@@ -189,6 +226,45 @@ const Col = styled.div`
 	align-items: center;
 	height: 100%;
 	width: 100%;
+	transition: width 1.8s;
+
+	.scale-in-ver-top {
+		-webkit-animation: scale-in-ver-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+		animation: scale-in-ver-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+	}
+
+	@-webkit-keyframes scale-in-ver-top {
+		0% {
+			-webkit-transform: scaleY(0);
+			transform: scaleY(0);
+			-webkit-transform-origin: 100% 0%;
+			transform-origin: 100% 0%;
+			opacity: 1;
+		}
+		100% {
+			-webkit-transform: scaleY(1);
+			transform: scaleY(1);
+			-webkit-transform-origin: 100% 0%;
+			transform-origin: 100% 0%;
+			opacity: 1;
+		}
+	}
+	@keyframes scale-in-ver-top {
+		0% {
+			-webkit-transform: scaleY(0);
+			transform: scaleY(0);
+			-webkit-transform-origin: 100% 0%;
+			transform-origin: 100% 0%;
+			opacity: 1;
+		}
+		100% {
+			-webkit-transform: scaleY(1);
+			transform: scaleY(1);
+			-webkit-transform-origin: 100% 0%;
+			transform-origin: 100% 0%;
+			opacity: 1;
+		}
+	}
 `;
 
 const Row = styled.div`
@@ -204,26 +280,30 @@ const Row = styled.div`
 `;
 
 const Input = styled.input`
-	padding: 10px;
 	border: 0;
 	border-radius: 10px;
 	font-size: 18px;
-	width: calc(80% - 20px);
+	height: 21px;
 	max-width: 500px;
+	padding: 10px;
+	width: calc(80% - 20px);
 `;
 
 const Button = styled.button`
-	width: 10rem;
 	background-color: white;
 	border: 0;
 	border-radius: 10px;
-	font-size: 18px;
 	cursor: pointer;
+	font-size: 18px;
+	height: 41px;
 	padding: 10px;
+	width: 10rem;
 `;
 
 const Image = styled.img`
 	max-width: 960px;
-	width: 30vw;
+	width: 25vw;
+	margin-left: 5px;
+	margin-right: 5px;
 	height: auto;
 `;
