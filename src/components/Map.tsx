@@ -3,7 +3,9 @@ import styled from "styled-components";
 import GoogleMapReact from "google-map-react";
 
 type MapProps = {
+	/** latitude of the property */
 	latitude: number;
+	/** longitude of the property */
 	longitude: number;
 };
 
@@ -15,7 +17,7 @@ export default function Map({ latitude, longitude }: MapProps) {
 
 	/**
 	 * Will render the default Google Maps marker on the map
-	 * @param map The map
+	 * @param map The map object where the marker will be placed
 	 * @param maps To access the Google Maps API
 	 */
 	const renderMarker = (map: any, maps: any): void => {

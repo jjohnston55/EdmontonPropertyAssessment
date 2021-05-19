@@ -5,7 +5,9 @@ import Card from "./Card";
 import Map from "./Map";
 
 type PropertyProps = {
+	/** the property object being displayed */
 	property: Property;
+	/** the neighbourhood object of the corresponding property being displayed */
 	neighbourhood: Neighbourhood;
 };
 

@@ -2,7 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 type CardProps = {
+	/** the title of the card */
 	title: string;
+	/** the content of the card */
 	description: string;
 };
 

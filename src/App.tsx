@@ -50,22 +50,32 @@ export default function App() {
 		}
 	}, [neighbourhoodText, neighbourhoods]);
 
+	/**
+	 * Updates the state of the NeighbourhoodText with the value of the input
+	 * @param event The change event from an input element
+	 */
 	const changeNeighbourhood = (event: ChangeEvent<HTMLInputElement>): void => {
 		setNeighbourhoodText(event.target.value);
 	};
 
+	/**
+	 * Updates the state of Property with the id of the datalist option
+	 * @param event The change event from an input element
+	 */
 	const changeProperty = (event: ChangeEvent<HTMLInputElement>): void => {
 		const address = event.target.value;
 		const options = event.target.list?.querySelectorAll("option");
 		let accountNumber: string;
 
 		if (options && address.length > 0) {
+			// Finds the Account Number for the given address
 			options.forEach((option) => {
 				if (option.text.toUpperCase() === address.toUpperCase()) {
 					accountNumber = option.id;
 				}
 			});
 
+			// Finds the existing property from the Account Number
 			const property = properties.find((p) => p.account_number === accountNumber);
 			if (property) {
 				setProperty(property);
@@ -79,6 +89,9 @@ export default function App() {
 		}
 	};
 
+	/**
+	 * Enables the SetShowProperty state if the Property state is not undefined
+	 */
 	const seeProperty = (): void => {
 		if (property) {
 			setShowProperty(true);
