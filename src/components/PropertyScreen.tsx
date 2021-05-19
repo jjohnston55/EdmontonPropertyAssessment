@@ -60,6 +60,10 @@ const Row = styled.div`
 	.map {
 		width: 100%;
 		height: 450px;
+
+		@media screen and (max-width: 768px) {
+			height: 200px;
+		}
 	}
 `;
 

@@ -180,6 +180,7 @@ const Container = styled.div`
 		width: 40%;
 		transition: width 1.2s;
 		box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+		z-index: 1;
 
 		.top {
 			margin-top: 20vh;
@@ -187,6 +188,16 @@ const Container = styled.div`
 
 		@media screen and (max-width: 1024px) {
 			width: 50%;
+		}
+
+		@media screen and (max-width: 768px) {
+			width: 100%;
+			height: 50vh;
+			padding-bottom: 2rem;
+
+			.top {
+				margin-top: 2rem;
+			}
 		}
 	}
 
@@ -197,6 +208,10 @@ const Container = styled.div`
 
 	.fullscreen {
 		width: 100%;
+
+		@media screen and (max-width: 768px) {
+			height: 100%;
+		}
 	}
 
 	@-webkit-keyframes slide-in-right {
@@ -223,6 +238,10 @@ const Container = styled.div`
 			opacity: 1;
 		}
 	}
+
+	@media screen and (max-width: 768px) {
+		flex-direction: column;
+	}
 `;
 
 const Col = styled.div`
@@ -231,7 +250,7 @@ const Col = styled.div`
 	align-items: center;
 	height: 100%;
 	width: 100%;
-	transition: width 1.8s;
+	transition: width 1.2s, height 1.2s;
 
 	.scale-in-ver-top {
 		-webkit-animation: scale-in-ver-top 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -318,4 +337,8 @@ const Image = styled.img`
 	margin-left: 5px;
 	margin-right: 5px;
 	height: auto;
+
+	@media screen and (max-width: 768px) {
+		width: 50vw;
+	}
 `;
