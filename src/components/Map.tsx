@@ -44,6 +44,7 @@ export default function Map({ latitude, longitude }: MapProps) {
 }
 
 const MapContainer = styled.div`
+	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 	height: 100%;
 	width: 100;
 `;
