@@ -51,7 +51,6 @@ const Container = styled.div`
 `;
 
 const Row = styled.div`
-	/* margin: 15px; */
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -65,7 +64,12 @@ const Row = styled.div`
 `;
 
 const Description = styled.p`
-	font-size: 1.5rem;
+	font-size: 1.4rem;
 	text-align: justify;
 	margin: 0.5rem 1.5rem;
+	font-weight: 300;
+
+	@media screen and (max-width: 1024px) {
+		font-size: 1.2rem;
+	}
 `;

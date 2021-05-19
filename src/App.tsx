@@ -61,10 +61,11 @@ export default function App() {
 
 		if (options && address.length > 0) {
 			options.forEach((option) => {
-				if (option.text === address.toUpperCase()) {
+				if (option.text.toUpperCase() === address.toUpperCase()) {
 					accountNumber = option.id;
 				}
 			});
+
 			const property = properties.find((p) => p.account_number === accountNumber);
 			if (property) {
 				setProperty(property);
@@ -176,12 +177,16 @@ const Container = styled.div`
 
 	.light {
 		background-color: #0081bc;
-		width: 40vw;
+		width: 40%;
 		transition: width 1.2s;
 		box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 
 		.top {
 			margin-top: 20vh;
+		}
+
+		@media screen and (max-width: 1024px) {
+			width: 50%;
 		}
 	}
 
@@ -271,11 +276,18 @@ const Row = styled.div`
 	display: flex;
 	justify-content: center;
 	margin: 10px;
+	text-align: center;
 	width: calc(100% - 20px);
 
 	a {
 		display: block;
 		color: white;
+	}
+
+	@media screen and (max-width: 1024px) {
+		h2 {
+			font-size: 1.2rem;
+		}
 	}
 `;
 
