@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Neighbourhood, Property } from "../utils/types";
+import Card from "./Card";
 import Map from "./Map";
 
 type PropertyProps = {
@@ -14,8 +15,6 @@ export default function PropertyScreen({ property, neighbourhood }: PropertyProp
 		style: "currency",
 	});
 
-	console.log(property);
-	console.log(neighbourhood);
 	return (
 		<Container>
 			<Row>
@@ -27,23 +26,18 @@ export default function PropertyScreen({ property, neighbourhood }: PropertyProp
 				</div>
 			</Row>
 			<Row>
-				<Col>
-					<h2>Address</h2>
-					<h1>
-						{property.house_number} {property.street_name}{" "}
-						{property.suite ? `Suite ${property.suite} ` : ""}
-					</h1>
-				</Col>
-				<Col>
-					<h2>Assessed Value</h2>
-					<h3>{formatter.format(property.assessed_value)}</h3>
-				</Col>
+				<Card description={neighbourhood.descriptive_name} title="Neighbourhood" />
+				<Card
+					description={formatter.format(property.assessed_value)}
+					title="Assessed Value"
+				/>
 			</Row>
 			<Row>
-				<Col>
-					<h2>{neighbourhood.descriptive_name}</h2>
-					{neighbourhood.description && <span>{neighbourhood.description}</span>}
-				</Col>
+				{neighbourhood.description ? (
+					<Description>{neighbourhood.description}</Description>
+				) : (
+					<Description>No description available for this neighbourhood</Description>
+				)}
 			</Row>
 		</Container>
 	);
@@ -62,14 +56,16 @@ const Row = styled.div`
 	height: 100%;
 	display: flex;
 	flex-direction: row;
+	justify-content: space-evenly;
 
 	.map {
 		width: 100%;
-		height: 500px;
+		height: 450px;
 	}
 `;
 
-const Col = styled.div`
-	width: 100%;
-	margin: 25px;
+const Description = styled.p`
+	font-size: 1.5rem;
+	text-align: justify;
+	margin: 0.5rem 1.5rem;
 `;
