@@ -139,22 +139,20 @@ export default function App() {
 						)}
 					</>
 				)}
-				<Row>
+				<LinkRow>
 					<a
 						href="https://data.edmonton.ca/City-Administration/Property-Assessment-Data-Current-Calendar-Year-/q7d6-ambg"
 						rel="noreferrer noopenner"
 						target="_blank">
 						Edmonton Open Data - Property Assessment
 					</a>
-				</Row>
-				<Row>
 					<a
 						href="https://data.edmonton.ca/City-Administration/City-of-Edmonton-Neighbourhoods/65fr-66s6"
 						rel="noreferrer noopenner"
 						target="_blank">
 						Edmonton Open Data - Neighbourhood List
 					</a>
-				</Row>
+				</LinkRow>
 			</Col>
 			{showProperty && property && selectedNeighbourhood && (
 				<Col className="slide-in-right">
@@ -192,8 +190,7 @@ const Container = styled.div`
 
 		@media screen and (max-width: 768px) {
 			width: 100%;
-			height: 50vh;
-			padding-bottom: 2rem;
+			height: fit-content;
 
 			.top {
 				margin-top: 2rem;
@@ -299,8 +296,10 @@ const Row = styled.div`
 	width: calc(100% - 20px);
 
 	a {
-		display: block;
 		color: white;
+		display: block;
+		font-size: 0.8rem;
+		width: 40%;
 	}
 
 	@media screen and (max-width: 1024px) {
@@ -308,6 +307,19 @@ const Row = styled.div`
 			font-size: 1.2rem;
 		}
 	}
+
+	@media screen and (max-width: 425px) {
+		h2 {
+			font-size: 1.2rem;
+			margin: 0;
+		}
+	}
+`;
+
+const LinkRow = styled(Row)`
+	flex-direction: row;
+	justify-content: space-evenly;
+	max-width: 960px;
 `;
 
 const Input = styled.input`
@@ -318,6 +330,11 @@ const Input = styled.input`
 	max-width: 500px;
 	padding: 10px;
 	width: calc(80% - 20px);
+
+	@media screen and (max-width: 768px) {
+		font-size: 16px;
+		height: 16px;
+	}
 `;
 
 const Button = styled.button`

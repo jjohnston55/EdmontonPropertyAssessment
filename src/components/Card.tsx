@@ -35,8 +35,8 @@ const Container = styled.div`
 	}
 
 	.focus-in-expand {
-		-webkit-animation: focus-in-expand 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s both;
-		animation: focus-in-expand 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.7s both;
+		-webkit-animation: focus-in-expand 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
+		animation: focus-in-expand 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
 	}
 
 	@-webkit-keyframes focus-in-expand {
@@ -68,11 +68,24 @@ const Container = styled.div`
 	}
 
 	@media screen and (max-width: 1024px) {
+		padding: 0 10px;
+
 		h3 {
 			font-size: 1.1rem;
 		}
 		h2 {
 			font-size: 1.2rem;
+		}
+	}
+
+	@media screen and (max-width: 425px) {
+		padding: 0 5px;
+		max-width: 50%;
+		h3 {
+			font-size: 0.9rem;
+		}
+		h2 {
+			font-size: 1rem;
 		}
 	}
 `;

@@ -30,7 +30,7 @@ export default function Map({ latitude, longitude }: MapProps) {
 		<MapContainer id="map">
 			<GoogleMapReact
 				bootstrapURLKeys={{
-					key: process.env.API_KEY ? process.env.API_KEY : "",
+					key: "",
 					language: "en",
 					libraries: ["places"],
 				}}
