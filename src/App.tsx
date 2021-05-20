@@ -98,6 +98,12 @@ export default function App() {
 		}
 	};
 
+	const reset = (): void => {
+		setProperty(undefined);
+		setNeighbourhoodText("");
+		setShowProperty(false);
+	};
+
 	return (
 		<Container>
 			<Col className={!showProperty ? "fullscreen light" : "light"}>
@@ -145,11 +151,13 @@ export default function App() {
 									))}
 							</datalist>
 						</Row>
-						{!showProperty && (
-							<Row>
+						<Row>
+							{!showProperty ? (
 								<Button onClick={seeProperty}>View Property</Button>
-							</Row>
-						)}
+							) : (
+								<Button onClick={reset}>Reset</Button>
+							)}
+						</Row>
 					</>
 				)}
 				<LinkRow>
@@ -332,7 +340,7 @@ const Row = styled.div`
 const LinkRow = styled(Row)`
 	flex-direction: row;
 	justify-content: space-evenly;
-	max-width: 960px;
+	max-width: 800px;
 `;
 
 const Input = styled.input`
@@ -359,6 +367,13 @@ const Button = styled.button`
 	height: 41px;
 	padding: 10px;
 	width: 10rem;
+
+	@media screen and (max-width: 768px) {
+		font-size: 16px;
+		height: 32px;
+		width: 8rem;
+		padding: 8px;
+	}
 `;
 
 const Image = styled.img`

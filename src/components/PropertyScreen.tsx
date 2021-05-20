@@ -72,7 +72,7 @@ const Row = styled.div`
 const Description = styled.p`
 	font-size: 1.4rem;
 	text-align: justify;
-	margin: 0.5rem 1.5rem;
+	margin: 0 1.5rem;
 	font-weight: 300;
 
 	@media screen and (max-width: 1024px) {
