@@ -1,6 +1,7 @@
 {
   "name": "edmonton-property-assessment",
-  "version": "0.1.0",
+  "homepage": "https://jjohnston55.github.io/EdmontonPropertyAssessment",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.12.0",
@@ -22,6 +23,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,6 +46,7 @@
   },
   "devDependencies": {
     "@types/google-map-react": "^2.1.0",
-    "@types/styled-components": "^5.1.9"
+    "@types/styled-components": "^5.1.9",
+    "gh-pages": "^3.1.0"
   }
 }
