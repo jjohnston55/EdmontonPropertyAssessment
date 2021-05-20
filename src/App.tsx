@@ -165,13 +165,16 @@ export default function App() {
 						href="https://data.edmonton.ca/City-Administration/Property-Assessment-Data-Current-Calendar-Year-/q7d6-ambg"
 						rel="noreferrer noopenner"
 						target="_blank">
-						Edmonton Open Data - Property Assessment
+						Property Data Source
+					</a>
+					<a href="https://jeffjohnston.dev/" rel="noreferrer noopenner" target="_blank">
+						My Portfolio
 					</a>
 					<a
 						href="https://data.edmonton.ca/City-Administration/City-of-Edmonton-Neighbourhoods/65fr-66s6"
 						rel="noreferrer noopenner"
 						target="_blank">
-						Edmonton Open Data - Neighbourhood List
+						Neighbourhood Data Source
 					</a>
 				</LinkRow>
 			</Col>
@@ -340,7 +343,7 @@ const Row = styled.div`
 const LinkRow = styled(Row)`
 	flex-direction: row;
 	justify-content: space-evenly;
-	max-width: 800px;
+	max-width: 500px;
 `;
 
 const Input = styled.input`
