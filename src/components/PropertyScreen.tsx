@@ -9,9 +9,11 @@ type PropertyProps = {
 	property: Property;
 	/** the neighbourhood object of the corresponding property being displayed */
 	neighbourhood: Neighbourhood;
+	/** the average property value for the neighbourhood */
+	avg: number;
 };
 
-export default function PropertyScreen({ property, neighbourhood }: PropertyProps) {
+export default function PropertyScreen({ property, neighbourhood, avg }: PropertyProps) {
 	const formatter = new Intl.NumberFormat("en-CA", {
 		currency: "CAD",
 		style: "currency",
@@ -27,13 +29,14 @@ export default function PropertyScreen({ property, neighbourhood }: PropertyProp
 					/>
 				</div>
 			</Row>
-			<Row>
+			<CardRow>
 				<Card description={neighbourhood.descriptive_name} title="Neighbourhood" />
 				<Card
 					description={formatter.format(property.assessed_value)}
 					title="Assessed Value"
 				/>
-			</Row>
+				<Card description={formatter.format(avg)} title="Neighbourhood Average" />
+			</CardRow>
 			<Row>
 				{neighbourhood.description ? (
 					<Description>{neighbourhood.description}</Description>
@@ -67,6 +70,11 @@ const Row = styled.div`
 			height: 200px;
 		}
 	}
+`;
+
+const CardRow = styled(Row)`
+	flex-wrap: wrap;
+	padding: 0.5rem 0;
 `;
 
 const Description = styled.p`

@@ -6,6 +6,7 @@ const PropertyScreen = React.lazy(() => import("./components/PropertyScreen"));
 
 export default function App() {
 	const [neighbourhoodText, setNeighbourhoodText] = useState("");
+	const [neighbourhoodAverage, setNeighbourhoodAverage] = useState(0);
 	const [property, setProperty] = useState<Property>();
 	const [properties, setProperties] = useState<Property[]>([]);
 	const [neighbourhoods, setNeighbourhoods] = useState<Neighbourhood[]>([]);
@@ -28,7 +29,14 @@ export default function App() {
 				`https://data.edmonton.ca/resource/q7d6-ambg.json?$limit=50000&neighbourhood_id=${selectedNeighbourhood.neighbourhood_number}`
 			)
 				.then((resp) => resp.json())
-				.then((data) => setProperties(data));
+				.then((data) => {
+					const totalVal = data.reduce(
+						(p: any, c: any) => p + parseFloat(c.assessed_value),
+						0
+					);
+					setProperties(data);
+					setNeighbourhoodAverage(totalVal / data.length);
+				});
 		}
 	}, [selectedNeighbourhood]);
 
@@ -181,7 +189,11 @@ export default function App() {
 			{showProperty && property && selectedNeighbourhood && (
 				<Col className="slide-in-right">
 					<Suspense fallback={<span>loading</span>}>
-						<PropertyScreen property={property} neighbourhood={selectedNeighbourhood} />
+						<PropertyScreen
+							property={property}
+							neighbourhood={selectedNeighbourhood}
+							avg={neighbourhoodAverage}
+						/>
 					</Suspense>
 				</Col>
 			)}
