@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/EdmontonPropertyAssessment/static/css/main.e7b32181.chunk.css",
-    "main.js": "/EdmontonPropertyAssessment/static/js/main.93d623df.chunk.js",
-    "main.js.map": "/EdmontonPropertyAssessment/static/js/main.93d623df.chunk.js.map",
-    "runtime-main.js": "/EdmontonPropertyAssessment/static/js/runtime-main.87c632a8.js",
-    "runtime-main.js.map": "/EdmontonPropertyAssessment/static/js/runtime-main.87c632a8.js.map",
+    "main.js": "/EdmontonPropertyAssessment/static/js/main.0dc0b485.chunk.js",
+    "main.js.map": "/EdmontonPropertyAssessment/static/js/main.0dc0b485.chunk.js.map",
+    "runtime-main.js": "/EdmontonPropertyAssessment/static/js/runtime-main.037137f8.js",
+    "runtime-main.js.map": "/EdmontonPropertyAssessment/static/js/runtime-main.037137f8.js.map",
     "static/js/2.1da7b022.chunk.js": "/EdmontonPropertyAssessment/static/js/2.1da7b022.chunk.js",
     "static/js/2.1da7b022.chunk.js.map": "/EdmontonPropertyAssessment/static/js/2.1da7b022.chunk.js.map",
     "static/js/3.1aeea2d7.chunk.js": "/EdmontonPropertyAssessment/static/js/3.1aeea2d7.chunk.js",
     "static/js/3.1aeea2d7.chunk.js.map": "/EdmontonPropertyAssessment/static/js/3.1aeea2d7.chunk.js.map",
-    "static/js/4.10f23c3e.chunk.js": "/EdmontonPropertyAssessment/static/js/4.10f23c3e.chunk.js",
-    "static/js/4.10f23c3e.chunk.js.map": "/EdmontonPropertyAssessment/static/js/4.10f23c3e.chunk.js.map",
+    "static/js/4.9e7ed945.chunk.js": "/EdmontonPropertyAssessment/static/js/4.9e7ed945.chunk.js",
+    "static/js/4.9e7ed945.chunk.js.map": "/EdmontonPropertyAssessment/static/js/4.9e7ed945.chunk.js.map",
     "static/js/5.242a7b3d.chunk.js": "/EdmontonPropertyAssessment/static/js/5.242a7b3d.chunk.js",
     "static/js/5.242a7b3d.chunk.js.map": "/EdmontonPropertyAssessment/static/js/5.242a7b3d.chunk.js.map",
     "index.html": "/EdmontonPropertyAssessment/index.html",
@@ -19,9 +19,9 @@
     "static/media/EDM.770ac9ea.png": "/EdmontonPropertyAssessment/static/media/EDM.770ac9ea.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.87c632a8.js",
+    "static/js/runtime-main.037137f8.js",
     "static/js/2.1da7b022.chunk.js",
     "static/css/main.e7b32181.chunk.css",
-    "static/js/main.93d623df.chunk.js"
+    "static/js/main.0dc0b485.chunk.js"
   ]
 }
